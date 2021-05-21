@@ -136,8 +136,4 @@ object TableFileNames {
     ("productamount", 24)
   )
 
-
-
-
-
 }
