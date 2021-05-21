@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ScalaCompilerConfiguration">
+    <profile name="Maven 1" modules="tags-etl,tags-model" />
+    <profile name="Maven 2" modules="tags-up">
+      <parameters>
+        <parameter value="-dependencyfile" />
+        <parameter value="$PROJECT_DIR$/tags-up/target/.scala_dependencies" />
+      </parameters>
+    </profile>
+  </component>
+</project>
