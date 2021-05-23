@@ -62,10 +62,10 @@ case class HBaseRelation(context: SQLContext, params: Map[String, String], userS
       scan.addColumn(familyBytes, Bytes.toBytes(field))
     })
     //过滤
-    configuration.set(
-      TableInputFormat.SCAN,
-      Base64.encodeBytes(ProtobufUtil.toScan(scan).toByteArray)
-    )
+//    configuration.set(
+//      TableInputFormat.SCAN,
+//      Base64.encodeBytes(ProtobufUtil.toScan(scan).toByteArray)
+//    )
 
     //4 调用底层API,读取HBase表数据
     val dataRDD: RDD[(ImmutableBytesWritable, Result)] = sqlContext.sparkContext.newAPIHadoopRDD(
@@ -116,13 +116,13 @@ case class HBaseRelation(context: SQLContext, params: Map[String, String], userS
     // 3 设置HBase表的名称
     conf.set(TableOutputFormat.OUTPUT_TABLE, params(HBASE_TABLE))
 
-    // 4. 保存数据到表
-    putsRDD.saveAsNewAPIHadoopFile(
-      "/apps/hbase/" + params(HBASE_TABLE) + "-" + System.currentTimeMillis(),
-      classOf[ImmutableBytesWritable],
-      classOf[Put],
-      classOf[TableOutputFormat[ImmutableBytesWritable]],
-      conf
-    )
+//    // 4. 保存数据到表
+//    putsRDD.saveAsNewAPIHadoopFile(
+//      "/apps/hbase/" + params(HBASE_TABLE) + "-" + System.currentTimeMillis(),
+//      classOf[ImmutableBytesWritable],
+//      classOf[Put],
+//      classOf[TableOutputFormat[ImmutableBytesWritable]],
+//      conf
+//    )
   }
 }
