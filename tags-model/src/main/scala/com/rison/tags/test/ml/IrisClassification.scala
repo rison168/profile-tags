@@ -61,7 +61,10 @@ object IrisClassification {
       .setInputCols(rawIrisDF.columns.dropRight(1))
       .setOutputCol("raw_features")
 
+
     val rawFeaturesDF: DataFrame = assembler.transform(df1)
+
+    rawFeaturesDF.show(10)
 
     rawFeaturesDF.printSchema()
     rawFeaturesDF.show(10, truncate = false)
