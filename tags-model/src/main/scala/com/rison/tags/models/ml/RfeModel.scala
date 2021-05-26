@@ -32,7 +32,7 @@ class RfeModel extends AbstractModel("用户活跃度模型RFE模型", ModelType
     import org.apache.spark.sql.functions._
     import spark.implicits._
     //  获取属性标签（5级标签）数据，选择id,rule
-    val rulesMap: Map[String, Long] = TagTools.convertMap(tagDF)
+//    val rulesMap: Map[String, Long] = TagTools.convertMap(tagDF)
     //1 从业务数据中计算RFE的值
     val rfeDF: DataFrame = businessDF
       .groupBy($"global_user_id") //按照用户分组
@@ -135,7 +135,8 @@ class RfeModel extends AbstractModel("用户活跃度模型RFE模型", ModelType
     // 聚类类簇关联属性标签数据rule，对应聚类类簇与标签tagId
     val indexTagMap: Map[Int, String] = centerIndexArray
       .map{case((centerIndex, _), index) =>
-        val tagName = rulesMap(index.toString)
+//        val tagName = rulesMap(index.toString)
+        val tagName = ""
         (centerIndex, tagName)
       }
       .toMap

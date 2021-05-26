@@ -5,7 +5,7 @@ import org.apache.hadoop.hbase.filter.CompareFilter.CompareOp
 
 import scala.util.matching.Regex
 
-c
+
 
 /**
  * 封装FILTER CLAUSE语句至Condition对象中

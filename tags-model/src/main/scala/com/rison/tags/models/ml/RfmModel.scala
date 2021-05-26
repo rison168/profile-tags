@@ -32,7 +32,7 @@ class RfmModel extends AbstractModel("客户价值RFM模型", ModelType.ML) {
     import session.implicits._
     import org.apache.spark.sql.functions._
     // 1. 获取属性标签（5级标签）数据，选择id,rule
-    val rulesMap: Map[String, Long] = TagTools.convertMap(tagDF)
+//    val rulesMap: Map[String, Long] = TagTools.convertMap(tagDF)
     /*
     (4,高价值)
     (1,中上价值)
@@ -40,7 +40,7 @@ class RfmModel extends AbstractModel("客户价值RFM模型", ModelType.ML) {
     (2,中下价值)
     (3,超低价值)
     */
-    rulesMap.foreach(println)
+//    rulesMap.foreach(println)
     // 2. 从业务数据中计算R、F、M值
     val rfmDF: DataFrame = businessDF
       .groupBy($"memberid") // 按照用户分组
@@ -142,7 +142,8 @@ class RfmModel extends AbstractModel("客户价值RFM模型", ModelType.ML) {
     // 9. 聚类类簇关联属性标签数据rule，对应聚类类簇与标签tagId
     val indexTagMap: Map[Int, String] = centerIndexArray
       .map{case((centerIndex, _), index) =>
-        val tagName = rulesMap(index.toString)
+//        val tagName = rulesMap(index.toString)
+        val tagName = null
         (centerIndex, tagName)
       }
       .toMap
